@@ -4,6 +4,8 @@ import { LRUCache, method, Service } from '@vtex/api'
 import { Clients } from './clients'
 import { status } from './middlewares/status'
 import { validate } from './middlewares/validate'
+// import { helloWorld } from './middlewares/helloWorld'
+import { helloWorld } from './middlewares/helloWorld'
 
 const TIMEOUT_MS = 800
 
@@ -31,6 +33,10 @@ const clients: ClientsConfig<Clients> = {
     status: {
       memoryCache,
     },
+    helloWorld: {
+      retries: 2,
+      timeout: 5000,
+    },
   },
 }
 
@@ -52,5 +58,11 @@ export default new Service({
     status: method({
       GET: [validate, status],
     }),
+    helloWorld: method({
+      GET: [helloWorld],
+    })
+    // helloWorld: method({
+    //   GET: [myApi],
+    // })
   },
 })

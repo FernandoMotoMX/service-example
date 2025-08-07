@@ -1,7 +1,7 @@
 {
   "name": "service-example",
-  "vendor": "vtex",
-  "version": "0.3.0",
+  "vendor": "comotoqa",
+  "version": "0.0.2",
   "title": "Service Example",
   "description": "Reference app for VTEX IO Services",
   "mustUpdateAt": "2018-01-04",
@@ -20,6 +20,13 @@
       "name": "outbound-access",
       "attrs": {
         "host": "httpstat.us",
+        "path": "*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "jsonplaceholder.typicode.com",
         "path": "*"
       }
     },
