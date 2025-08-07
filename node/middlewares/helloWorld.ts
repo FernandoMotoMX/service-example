@@ -32,19 +32,4 @@ export async function helloWorld(
   }
 
   await next() // Always call next() unless you’re terminating the flow here
-
-  // const statusResponse = await helloWorldClient.getSomething()
-
-  // console.info('Status response:', statusResponse)
-
-  // ctx.set('Cache-Control', 'no-cache')
-  // ctx.body = {
-  //   message: 'HelloWorld',
-  //   json: statusResponse,
-  //   account,
-  //   workspace,
-  //   time: new Date().toISOString(),
-  // }
-
-  // await next()
 }

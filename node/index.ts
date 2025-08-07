@@ -6,6 +6,8 @@ import { status } from './middlewares/status'
 import { validate } from './middlewares/validate'
 // import { helloWorld } from './middlewares/helloWorld'
 import { helloWorld } from './middlewares/helloWorld'
+import { marketingCloud } from './middlewares/marketingCloud'
+import { bodyParserCloud } from './middlewares/bodyParserCloud'
 
 const TIMEOUT_MS = 800
 
@@ -60,9 +62,12 @@ export default new Service({
     }),
     helloWorld: method({
       GET: [helloWorld],
-    })
-    // helloWorld: method({
-    //   GET: [myApi],
-    // })
+    }),
+    cloud: method({
+      POST: [
+        bodyParserCloud,
+        marketingCloud
+      ]
+    }),
   },
 })

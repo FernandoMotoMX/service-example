@@ -13,6 +13,10 @@
     "helloWorld": {
       "path": "/_v/hello-world",
       "public": true
+    },
+     "cloud": {
+      "path": "/_v/cloud",
+      "public": true
     }
   }
 }

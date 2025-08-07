@@ -31,6 +31,20 @@
       }
     },
     {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "mct3wtx8rtr3zf5swqr60mkz0sw0.auth.marketingcloudapis.com",
+        "path": "/v2/token"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "mct3wtx8rtr3zf5swqr60mkz0sw0.rest.marketingcloudapis.com",
+        "path": "/data/v1/async/dataextensions/key:C6DB6C1C-1764-42AB-8470-E5FF2B4A4C5F"
+      }
+    },
+    {
       "name": "colossus-fire-event"
     },
     {
