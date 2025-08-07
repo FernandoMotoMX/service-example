@@ -1,18 +1,20 @@
 // node/middlewares/testMiddleware.ts
-import { ServiceContext } from '@vtex/api'
+import type { ServiceContext } from '@vtex/api'
 
-export async function helloWorld(ctx: ServiceContext<any, any>, next: () => Promise<any>) {
-  console.log('Test middleware triggered')
+export async function helloWorld(
+  ctx: ServiceContext<any, any>,
+  next: () => Promise<any>
+) {
+  // console.log('Test middleware triggered')
 
   const {
     vtex: { account, workspace },
-    clients: {
-      helloWorld: helloWorldClient
-    }
+    clients: { helloWorld: helloWorldClient },
   } = ctx
 
   try {
     const data = await helloWorldClient.getSomething()
+
     ctx.body = {
       data,
       message: 'HelloWorld',
@@ -31,12 +33,10 @@ export async function helloWorld(ctx: ServiceContext<any, any>, next: () => Prom
 
   await next() // Always call next() unless you’re terminating the flow here
 
-
   // const statusResponse = await helloWorldClient.getSomething()
 
   // console.info('Status response:', statusResponse)
 
-  
   // ctx.set('Cache-Control', 'no-cache')
   // ctx.body = {
   //   message: 'HelloWorld',
