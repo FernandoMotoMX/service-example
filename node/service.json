@@ -17,6 +17,10 @@
      "cloud": {
       "path": "/_v/cloud",
       "public": true
+    },
+    "createDocument": {
+      "path": "/_m_md/CreateNewDocument/:acronym",
+      "public": true
     }
   }
 }
