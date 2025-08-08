@@ -2,12 +2,9 @@ import type { ClientsConfig, ServiceContext, RecorderState } from '@vtex/api'
 import { LRUCache, method, Service } from '@vtex/api'
 
 import { Clients } from './clients'
-import { status } from './middlewares/status'
-import { validate } from './middlewares/validate'
-// import { helloWorld } from './middlewares/helloWorld'
-import { helloWorld } from './middlewares/helloWorld'
 import { marketingCloud } from './middlewares/marketingCloud'
 import { bodyParserCloud } from './middlewares/bodyParserCloud'
+import { createDocument } from './middlewares/createDocument'
 
 const TIMEOUT_MS = 800
 
@@ -56,18 +53,14 @@ declare global {
 export default new Service({
   clients,
   routes: {
-    // `status` is the route ID from service.json. It maps to an array of middlewares (or a single handler).
-    status: method({
-      GET: [validate, status],
-    }),
-    helloWorld: method({
-      GET: [helloWorld],
-    }),
     cloud: method({
       POST: [
         bodyParserCloud,
         marketingCloud
       ]
     }),
-  },
+    createNewDocumentMDService: method({
+      POST: [createDocument]
+    })
+  }
 })

@@ -1,6 +1,6 @@
 import { json } from 'co-body'
 
-export async function createNewDocumentMD(ctx: Context) {
+export async function createDocument(ctx: Context) {
   ctx.set('Access-Control-Allow-Origin', '*')
   const {
     vtex: {
