@@ -1,7 +1,7 @@
 export async function marketingCloud(ctx: Context,  next: () => Promise<any>) {
   const {
     clients: { 
-      marketingCloud,
+      marketingCloud: marketingCloudClient,
       marketingCloudRest 
     },
   } = ctx;
@@ -30,7 +30,7 @@ export async function marketingCloud(ctx: Context,  next: () => Promise<any>) {
     }
     
     if(!token || new Date().getTime()/1000 - token.fecha >= 1079){
-      token = await marketingCloud.getToken()
+      token = await marketingCloudClient.getToken()
       token.fecha = new Date().getTime()/1000
     }
 

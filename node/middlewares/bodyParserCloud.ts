@@ -7,7 +7,6 @@ export async function bodyParserCloud(ctx: Context, next: () => Promise<any>) {
     ctx.status = 403;
   } else {
     const body = await json(ctx.req);
-    console.log(body,"body")
     ctx.state.body = body;
     await next();
   }
