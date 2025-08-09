@@ -1,0 +1,211 @@
+type Totals {
+  id: String
+  name: String
+  value: Int
+}
+
+type ItemPurchaseConditions {
+  id: String
+  seller: String
+  price: Int
+  listPrice: Int
+  slas: [String]
+  sellerChain: [String]
+}
+
+type PurchaseConditions {
+  itemPurchaseConditions: [ItemPurchaseConditions]
+}
+
+type DeliveryChannels {
+  id: String
+}
+
+type LogisticsInfo {
+  itemIndex: Int
+  addressId: String
+  selectedSla: String
+  selectedDeliveryChannel: String
+  quantity: Int
+  deliveryChannels: [DeliveryChannels]
+  slas: [String]
+  shipsTo: [String]
+}
+
+type PaymentSystems {
+  id: Int
+  name: String
+  groupName: String
+  validator: String
+  stringId: String
+  template: String
+  requiresDocument: Boolean
+  isCustom: Boolean
+  description: String
+  requiresAuthentication: Boolean
+  dueDate: String
+  availablePayments: String
+}
+
+type SellerMerchantInstallments {
+  id: String
+  count: Int
+  hasInterestRate: Boolean
+  interestRate: Int
+  value: Int
+  total: Int
+}
+
+type Installments {
+  count: Int
+  hasInterestRate: Boolean
+  interestRate: Int
+  value: Int
+  total: Int
+  sellerMerchantInstallments: [SellerMerchantInstallments]
+}
+
+type InstallmentOptions {
+  paymentSystem: String
+  bin: String
+  paymentName: String
+  paymentGroupName: String
+  value: Int
+  installments: [Installments]
+}
+
+type PaymentData {
+  availableTokens: [String]
+  availableAccounts: [String]
+  giftCardMessages: [String]
+  giftCards: [String]
+  payments: [String]
+  paymentSystems: [PaymentSystems]
+  installmentOptions: [InstallmentOptions]
+}
+
+type Parameters {
+  name: String
+  value: String
+}
+
+type Effects {
+  parameters: [Parameters]
+}
+
+type Conditions {
+  minimumQuantity: Int
+  parameters: [Parameters]
+}
+
+type Teaser {
+  featured: Boolean
+  id: String
+  name: String
+  teaserType: String
+  effects: Effects
+  conditions: Conditions
+}
+
+type RatesAndBenefitsData {
+  teaser: [Teaser]
+  rateAndBenefitsIdentifiers: [String]
+}
+
+type SellingPrices {
+  value: Int
+  quantity: Int
+}
+
+type PriceDefinition {
+  calculatedSellingPrice: Int
+  total: Int
+  sellingPrices: [SellingPrices]
+}
+
+type Seguro {
+  maximumNumberOfCharacters: Int
+  domain: [String]
+}
+
+type Schema {
+  seguro: Seguro
+}
+
+type AttachmentOfferings {
+  name: String
+  required: Boolean
+  schema: Schema
+}
+
+type Offerings {
+  type: String
+  id: String
+  name: String
+  allowGiftMessage: Boolean
+  price: Int
+  attachmentOfferings: [AttachmentOfferings]
+}
+
+type Items {
+  id: String
+  requestIndex: Int
+  quantity: Int
+  seller: String
+  tax: Int
+  priceValidUntil: String
+  price: Int
+  listPrice: Int
+  rewardValue: Int
+  sellingPrice: Int
+  measurementUnit: String
+  unitMultiplier: Int
+  parentItemIndex: String
+  parentAssemblyBinding: String
+  availability: String
+  catalogProvider: String
+  priceDefinition: PriceDefinition
+  priceTags: [String]
+  offerings: [Offerings]
+  sellerChain: [String]
+}
+
+type MktData {
+  utmSource: String
+  utmMedium: String
+  utmCampaign: String
+  utmipage: String
+  utmiPart: String
+  utmiCampaign: String
+  coupon: String
+}
+
+type SimulationResponse {
+  marketingData: MktData
+  postalCode: String
+  country: String
+  subscriptionData: String
+  itemMetadata: String
+  totals: [Totals]
+  pickupPoints: [String]
+  purchaseConditions: PurchaseConditions
+  messages: [String]
+  logisticsInfo: [LogisticsInfo]
+  selectableGifts: [String]
+  paymentData: PaymentData
+  ratesAndBenefitsData: RatesAndBenefitsData
+  items: [Items]
+}
+
+input MarketingData {
+  utmSource: String
+  utmMedium: String
+  utmCampaign: String
+  utmiPage: String
+  utmiPart: String
+  utmiSource: String
+  utmiMedium: String
+  utmiCampaign: String
+  utmiCp: String
+  coupon: String
+}

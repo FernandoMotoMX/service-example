@@ -1,7 +1,7 @@
 {
   "name": "service-example",
   "vendor": "comotoqa",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "title": "Service Example",
   "description": "Reference app for VTEX IO Services",
   "mustUpdateAt": "2018-01-04",
@@ -9,13 +9,21 @@
   "dependencies": {},
   "builders": {
     "node": "7.x",
-    "docs": "0.x"
+    "docs": "0.x",
+    "graphql": "1.x"
   },
   "scripts": {
     "prereleasy": "bash lint.sh"
   },
   "credentialType": "absolute",
   "policies": [
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "jsonplaceholder.typicode.com",
+        "path": "*"
+      }
+    },
     {
       "name": "outbound-access",
       "attrs": {

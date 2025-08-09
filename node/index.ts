@@ -5,6 +5,8 @@ import { Clients } from './clients'
 import { marketingCloud } from './middlewares/marketingCloud'
 import { bodyParserCloud } from './middlewares/bodyParserCloud'
 import { createDocument } from './middlewares/createDocument'
+import { helloWorld } from './middlewares/helloWorld'
+import Query from './graphql/Queries/Resolver'
 
 const TIMEOUT_MS = 800
 
@@ -28,14 +30,14 @@ const clients: ClientsConfig<Clients> = {
       retries: 2,
       timeout: TIMEOUT_MS,
     },
-    // This key will be merged with the default options and add this cache to our Status client.
-    status: {
-      memoryCache,
-    },
     helloWorld: {
       retries: 2,
       timeout: 5000,
     },
+    // graphql
+    queryGetProductTeaser: {
+      timeout: 5000
+    }
   },
 }
 
@@ -52,14 +54,22 @@ declare global {
 // Export a service that defines route handlers and client options.
 export default new Service({
   clients,
+  graphql: {
+    resolvers: {
+      Query
+    }
+  },
   routes: {
+    helloWorld: method({
+      GET: [helloWorld],
+    }),
     cloud: method({
       POST: [
         bodyParserCloud,
         marketingCloud
       ]
     }),
-    createNewDocumentMDService: method({
+    createDocument: method({
       POST: [createDocument]
     })
   }

@@ -1,0 +1,14 @@
+type Query {
+  queryGetProductTeaser(
+    productId: String
+    segment: String
+    session: String
+  ): [Teasers] @cacheControl(scope: PRIVATE)
+  simulation(
+    sku: String!
+    sc: Int
+    marketingData: MarketingData
+    quantity: Int
+    seller: String
+  ): SimulationResponse @cacheControl(scope: PRIVATE)
+}
